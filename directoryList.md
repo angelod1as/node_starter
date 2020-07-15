@@ -1,0 +1,21 @@
+|-- personal
+    |-- .DS_Store
+    |-- .env
+    |-- .env.example
+    |-- .eslintignore
+    |-- .eslintrc.json
+    |-- .gitignore
+    |-- README.md
+    |-- babel.config.js
+    |-- jest.config.js
+    |-- ormconfig.example.json
+    |-- ormconfig.json
+    |-- package.json
+    |-- prettier.config.js
+    |-- tsconfig.json
+    |-- yarn.lock
+    |-- src
+    |-- tmp
+        |-- .gitignore
+        |-- uploads
+            |-- .gitignore
