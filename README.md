@@ -220,7 +220,150 @@ The list is ordered by folder complexity: from least complex to "absolute mess".
           - **:pencil2: index.ts**
 
             Imports and connects providers with `tsyringe`
+
+  - **:file_folder: modules/**
+
+    Here are the folders/files os specific relationships with the database. Repositories and Services should talk to the *:file_folder: Providers* in *:file_folder: Shared* folder.
+
+    - **:file_folder: _ModuleName_**
+
+      The folder should have the associated module as its name. Eg: `users`, `notifications` or `appointments`.
+
+      - **:file_folder: dtos**
+
+        - **:pencil2: I<i>DoSomething</i>DTO.ts**
+
+          Stores typescript Data Transfer Objects.
+
+      - **:file_folder: infra**
+
+          Files related to module infrastructure
+
+        - **:file_folder: http**
+
+          Code accessible by external sources, like API calls.
+
+          - **:file_folder: controllers**
+
+            Controllers that interact with services.
+
+            - **:pencil2: <i>ControllerName</i>Controller.ts**
+
+              Each file has a class with limited functions. They never manipulate database directly, just call the associated services.
+
+          - **:file_folder: middlewares**
+
+            Express middlewares for this specific module.
+
+            - **:pencil2: <i>MiddlewareName</i>.ts**
+
+              File that interacts with Express as a middleware, eg: ensureAuthenticate.ts
+
+          - **:file_folder: routes**
+
+            Exposes routes to HTTP.
+
+              - **:pencil2: <i>filename</i>.routes.ts**
+
+                Uses Express to expose routes and work with middlewares.
+
+        - **:file_folder: typeorm**
+
+          Stores files that interact with database
+          
+          - **:file_folder: entities**
+
+            These files are schemas or models using TypeScript @descriptors.
+
+            - **:pencil2: <i>Filename</i>.ts**
+
+          - **:file_folder: repositories**
+
+            Stores repositories that execute database queries and actions
+
+            - **:pencil2: <i>FileName</i>Repository.ts**
+
+              Find, create, update and delete from database
       
+      
+      - **:file_folder: providers**
+
+        Specific module providers
+
+        - **:file_folder: providers/**
+
+          Different from the aforementioned `provider` folder, this one interacts directly with the module and needs it's existance to survive.
+
+          - **:pencil2: index.ts**
+
+            Imports and connects providers with `tsyringe`
+        
+          - **:file_folder: <i>ServiceName</i>Provider/**
+
+            Contains all information of the provider.
+
+            - **:file_folder: dtos/**
+
+              - **:pencil2: I<i>DoSomething</i>DTO.ts**
+
+                Stores typescript Data Transfer Objects.
+
+            - **:file_folder: fakes/**
+
+              - **:pencil2: Fake<i>ServiceName</i>Provider.ts**
+
+                A copy of the provider with fake data for testing. Can't rely on other components (as testing good practices)
+
+            - **:file_folder: implementations/**
+
+                Stores all possible implementations of provider. Eg: `BCryptHashProvider`.
+
+                - **:pencil2: <i>ImplementationName</i>Provider.ts**
+
+                  Interacts with database or service
+
+            - **:file_folder: models/**
+
+              - **:pencil2: I<i>ModelName</i>Provider.ts**
+
+                Store models and schemas for provider usage
+      
+      - **:file_folder: repositories**
+        
+        Stores fake and repository interface
+
+        - **:file_folder: fakes**
+
+          Has fake repository for testing
+
+          - **:pencil2: Fake<i>FileName</i>Repository.ts**
+
+            Find, create, update and delete from local array, for testing purposes.
+
+        - **:pencil2: I<i>FileName</i>Repository.ts**
+
+          Repository interface, typing all it's properties.
+
+      - **:file_folder: services**
+
+        Stores services used by repositories, following Single Responsability Principle. Every file **has** to have it's test counterpart.
+
+        - **:pencil2: <i>FileName</i>Service.ts**
+
+          Has single property: `execute()`. It interacts with the request, formats and parses data, then responses accordingly.
+
+        - **:microscope: <i>FileName</i>Service.spec.ts**
+
+          Tests service functionality using `jest`. Uses fake repositories and providers.
+      
+      - **:file_folder: views**
+
+        Stores possible views for module, like the handlebars file below for email-templating.
+
+        - **:pencil2: <i>file_name</i>.hbs**
+
+          Example file. This one is a handlebars file that serves as a template for the Mail service.
+
 ## Implementations
 
 In this template, there are a few pre-made implementations.
@@ -231,6 +374,18 @@ In this template, there are a few pre-made implementations.
 - Two storage providers: disk (dev and temporary storage) and Amazon S3
 
 You can add/remove any of them knowing that you'll need to change other files, mainly those that connect the providers with the rest of the server... but that's easy if your IDE shows those kinds of "missing file" errors.
+
+## Modules
+
+In this template, there is a `user` module already implemented with the following services:
+
+- Authenticate user (via JWT)
+- Create user
+- Reset password
+- Send "forgot password" e-mail
+- Show profile
+- Update profile
+- Update user avatar
 
 ## Root files walkthrough
 
