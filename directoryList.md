@@ -24,6 +24,66 @@
     |   |   |-- cache.ts
     |   |   |-- mail.ts
     |   |   |-- upload.ts
+    |   |-- modules
+    |   |   |-- users
+    |   |       |-- dtos
+    |   |       |   |-- ICreateUserDTO.ts
+    |   |       |   |-- IFindAllProvidersDTO.ts
+    |   |       |-- infra
+    |   |       |   |-- http
+    |   |       |   |   |-- controllers
+    |   |       |   |   |   |-- ForgotPasswordController.ts
+    |   |       |   |   |   |-- ProfileController.ts
+    |   |       |   |   |   |-- ResetPasswordController.ts
+    |   |       |   |   |   |-- SessionsControllers.ts
+    |   |       |   |   |   |-- UserAvatarController.ts
+    |   |       |   |   |   |-- UsersControllers.ts
+    |   |       |   |   |-- middlewares
+    |   |       |   |   |   |-- ensureAuthenticated.ts
+    |   |       |   |   |-- routes
+    |   |       |   |       |-- password.routes.ts
+    |   |       |   |       |-- profile.routes.ts
+    |   |       |   |       |-- sessions.routes.ts
+    |   |       |   |       |-- users.routes.ts
+    |   |       |   |-- typeorm
+    |   |       |       |-- entities
+    |   |       |       |   |-- User.ts
+    |   |       |       |   |-- UserToken.ts
+    |   |       |       |-- repositories
+    |   |       |           |-- UserTokensRepository.ts
+    |   |       |           |-- UsersRepository.ts
+    |   |       |-- providers
+    |   |       |   |-- index.ts
+    |   |       |   |-- HashProvider
+    |   |       |       |-- fakes
+    |   |       |       |   |-- FakeHashProvider.ts
+    |   |       |       |-- implementations
+    |   |       |       |   |-- BCryptHashProvider.ts
+    |   |       |       |-- models
+    |   |       |           |-- IHashProvider.ts
+    |   |       |-- repositories
+    |   |       |   |-- IUserTokensRepository.ts
+    |   |       |   |-- IUsersRepository.ts
+    |   |       |   |-- fakes
+    |   |       |       |-- FakeUserTokensRepository.ts
+    |   |       |       |-- FakeUsersRepository.ts
+    |   |       |-- services
+    |   |       |   |-- AuthenticateUserService.spec.ts
+    |   |       |   |-- AuthenticateUserService.ts
+    |   |       |   |-- CreateUserService.spec.ts
+    |   |       |   |-- CreateUserService.ts
+    |   |       |   |-- ResetPasswordService.spec.ts
+    |   |       |   |-- ResetPasswordService.ts
+    |   |       |   |-- SendForgotPasswordEmailService.spec.ts
+    |   |       |   |-- SendForgotPasswordEmailService.ts
+    |   |       |   |-- ShowProfileService.spec.ts
+    |   |       |   |-- ShowProfileService.ts
+    |   |       |   |-- UpdateProfileService.spec.ts
+    |   |       |   |-- UpdateProfileService.ts
+    |   |       |   |-- UpdateUserAvatarService.spec.ts
+    |   |       |   |-- UpdateUserAvatarService.ts
+    |   |       |-- views
+    |   |           |-- forgot_password.hbs
     |   |-- shared
     |       |-- container
     |       |   |-- index.ts
@@ -87,8 +147,6 @@
     |                   |-- 1587126753091-AddAvatarFieldToUsers.ts
     |                   |-- 1589050488229-CreateUserTokens.ts
     |                   |-- 1589288323532-AddUserIdAppointments.ts
-    |-- test
-    |   |-- test1
     |-- tmp
         |-- .gitkeep
         |-- uploads
