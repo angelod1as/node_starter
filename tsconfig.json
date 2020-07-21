@@ -24,4 +24,7 @@
     "emitDecoratorMetadata": true,
     "forceConsistentCasingInFileNames": true
   },
+  "include": [
+    "src"
+  ]
 }
