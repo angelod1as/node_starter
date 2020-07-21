@@ -23,7 +23,7 @@ class UpdateProfileService {
 
     @inject('HashProvider')
     private hashProvider: IHashProvicer,
-  ) { }
+  ) {}
 
   public async execute({
     user_id,
