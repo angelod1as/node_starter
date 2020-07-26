@@ -1,6 +1,8 @@
 # Node Starter
 
-A Node server folder structure.
+A Node server folder structure with user registration.
+
+It uses Redis for cache management and Postgres as relational database. Redis usage can be easily removed.
 
 ## Folder structure
 
@@ -8,7 +10,7 @@ A Node server folder structure.
 
 ```
 |-- personal
-    |-- .DS_Store
+    |-- .editorconfig
     |-- .env
     |-- .env.example
     |-- .eslintignore
@@ -16,9 +18,7 @@ A Node server folder structure.
     |-- .gitignore
     |-- README.md
     |-- babel.config.js
-    |-- directoryList.md
     |-- jest.config.js
-    |-- mddir.js
     |-- ormconfig.example.json
     |-- ormconfig.json
     |-- package.json
@@ -150,12 +150,8 @@ A Node server folder structure.
     |               |-- index.ts
     |               |-- migrations
     |                   |-- .gitkeep
-    |                   |-- 1586866908707-CreateAppointments.ts
-    |                   |-- 1586876010061-CreateUsers.ts
-    |                   |-- 1586877157192-AlterProviderFieldToProviderId.ts
-    |                   |-- 1587126753091-AddAvatarFieldToUsers.ts
-    |                   |-- 1589050488229-CreateUserTokens.ts
-    |                   |-- 1589288323532-AddUserIdAppointments.ts
+    |                   |-- 1594933441962-CreateUsers.ts
+    |                   |-- 1594935768060-CreateUserTokens.ts
     |-- tmp
         |-- .gitkeep
         |-- uploads
@@ -243,7 +239,7 @@ The list is ordered by folder complexity: from least complex to "absolute mess".
         - **✏️ index.ts**
 
           A simple file importing the providers.
-      
+
         - **📁 <i>ServiceName</i>Provider/**
 
           This folder contains all information of the provider. This is an example for a fake service. For actual folders in this project, see next section.
@@ -327,7 +323,7 @@ The list is ordered by folder complexity: from least complex to "absolute mess".
         - **📁 typeorm**
 
           Stores files that interact with database
-          
+
           - **📁 entities**
 
             These files are schemas or models using TypeScript @descriptors.
@@ -341,7 +337,7 @@ The list is ordered by folder complexity: from least complex to "absolute mess".
             - **✏️ <i>FileName</i>Repository.ts**
 
               Find, create, update and delete from database
-      
+
       - **📁 providers**
 
         Specific module providers
@@ -353,7 +349,7 @@ The list is ordered by folder complexity: from least complex to "absolute mess".
           - **✏️ index.ts**
 
             Imports and connects providers with `tsyringe`
-        
+
           - **📁 <i>ServiceName</i>Provider/**
 
             Contains all information of the provider.
@@ -383,9 +379,9 @@ The list is ordered by folder complexity: from least complex to "absolute mess".
               - **🛠 I<i>ModelName</i>Provider.ts**
 
                 Store models and schemas for provider usage
-      
+
       - **📁 repositories**
-        
+
         Stores fake and repository interface
 
         - **📁 fakes**
@@ -411,7 +407,7 @@ The list is ordered by folder complexity: from least complex to "absolute mess".
         - **🧪 <i>FileName</i>Service.spec.ts**
 
           Tests service functionality using `jest`. Uses fake repositories and providers.
-      
+
       - **📁 views**
 
         Stores possible views for module, like the handlebars file below for email-templating.
@@ -514,5 +510,9 @@ Working alongside `eslint` is `prettier`:
 
 ## SOLID
 
-I've built this based on code from code [Rocketseat](https://rocketseat.com.br/) bootcamp. I try the most to follow the [SOLID](https://khalilstemmler.com/articles/solid-principles/solid-typescript/) principles.
+I've built this based on code from [Rocketseat](https://rocketseat.com.br/) bootcamp. I try the most to follow the [SOLID](https://khalilstemmler.com/articles/solid-principles/solid-typescript/) principles.
+
+This Readme file is huge because I feel there's a lack of explanation and documentation on traditional Readmes, so, I decided to make one I'd really like to see lying around.
+
+It took me about 8 hours to finish this project.
 
