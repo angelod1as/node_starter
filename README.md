@@ -1,8 +1,8 @@
 # Node Starter
 
-> A Node server boilerplate.
+> A Node server typescript boilerplate.
 
-A good starting point for a Node server. It uses Redis for cache management and Postgres as relational database — both easily removable and interchanged.
+A good starting point for a Node server. It uses Redis for cache management and Postgres as relational database — both easily removable and interchanged. Also, it's entirely written using Typescript.
 
 Folder structure tries to follow the [SOLID](https://khalilstemmler.com/articles/solid-principles/solid-typescript/) principles.
 
